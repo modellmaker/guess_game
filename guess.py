@@ -4,12 +4,9 @@ lives = 0
 interval = 0
 attempts = 1
 
-with open("high_score.txt", "r", encoding="utf8") as hs_file:
-    contents = hs_file.read().splitlines()
-    print("Best player: " + contents[0] + ", Attempts: " + contents[1])
-
 name = input("Please add your name: ")
 print("Welcome, " + name.title() + "!")
+
 level = input("Choose level (Easy, Medium, Hard): ")
 level = level.lower()
 
@@ -25,6 +22,12 @@ elif level == "hard":
 else:
     print("You didn't provide a suitable level.")
 
+with open("high_score.txt", "r", encoding="utf8") as hs_file:
+    contents = hs_file.read().splitlines()
+    print(contents)
+    if level == "easy":
+        print("\nLevel: " + contents[0] + "\nBest player: " + contents[1] + ", Attempts: " + contents[2])
+
 secret = random.randint(1, interval)
 
 for i in reversed(range(lives)):
@@ -36,5 +39,5 @@ for i in reversed(range(lives)):
         print("You've guessed it! The secret number was " + str(secret) + "!")
         print("Attempts needed: " + str(attempts))
         with open("high_score.txt", "w", encoding="utf8") as hs_file:
-            hs_file.write(name.title() + "\n" + str(attempts))
+            hs_file.write(level.title() + "\n" + name.title() + "\n" + str(attempts))
         break
