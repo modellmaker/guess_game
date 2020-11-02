@@ -18,7 +18,7 @@ if level == "easy":
         high_score = []
         contents = hs_file
         for line in contents:
-            contents = line.strip().split(",")
+            contents = line.strip().split(",")[:-1]
             high_score.append(contents)
         for i in range(0, len(high_score[1])):
             high_score[1][i] = int(high_score[1][i])
@@ -74,13 +74,11 @@ for i in reversed(range(lives)):
                 high_score = []
                 contents = hs_file
                 for line in contents:
-                    contents = line.strip().split(",")
+                    contents = line.strip().split(",")[:-1]
                     high_score.append(contents)
-                print(high_score)
                 attempt_index = high_score[1].index(str(max_attempt))
                 high_score[0][attempt_index] = name
                 high_score[1][attempt_index] = attempt
-                print(high_score)
                 hs_file.seek(0)
                 hs_file.truncate()
                 for item in high_score[0]:
