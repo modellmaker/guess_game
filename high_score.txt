@@ -1,0 +1,12 @@
+Easy 0
+e_David 5
+e_Feri 2
+e_Mari 3
+Medium 0
+m_Der 1
+m_Fer 3
+m_Mar 4
+Hard 0
+h_Mar 4
+h_Ger 5
+h_Nar 3

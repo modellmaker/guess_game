@@ -13,10 +13,22 @@ print("Welcome, " + name.title() + "!")  # Játékos nevének bekérése
 level = input("Choose level (Easy, Medium, Hard): ")  # Nehézségi szint választása
 level = level.lower()
 
+with open("high_score_easy.txt", "r", encoding="utf8") as hs_file:  # high score fájl megnyitása
+    contents = hs_file.read().splitlines()
+    for line in contents:
+        contents = line.split(",")
+        high_score.append(contents)
+    for score in range(len(high_score)):
+        max_attempt.append(high_score[score][1])
+    max_attempt = max(max_attempt)
+    print("\nBest players on level:")
+    for item in range(len(high_score)):
+        print(high_score[item][0] + ": " + high_score[item][1])
+
 if level == "easy":
     lives = 20
     interval = 5
-    with open("high_score_easy.txt", "r", encoding="utf8") as hs_file:  # high score fájl megnyitása
+    """with open("high_score_easy.txt", "r", encoding="utf8") as hs_file:  # high score fájl megnyitása
         contents = hs_file.read().splitlines()
         for line in contents:
             contents = line.split(",")
@@ -26,7 +38,7 @@ if level == "easy":
         max_attempt = max(max_attempt)
         print("\nBest players on Easy level:")
         for item in range(len(high_score)):
-            print(high_score[item][0] + ": " + high_score[item][1])
+            print(high_score[item][0] + ": " + high_score[item][1])"""
 
 elif level == "medium":
     lives = 10
